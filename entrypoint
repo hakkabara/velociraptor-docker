@@ -8,7 +8,7 @@ FILESTORE_DIRECTORY="./"
 CLIENT_DIR="/velociraptor/clients"
 
 # Move binaries into place
-cp /opt/velociraptor/linux/velociraptor . && chmod +x velociraptor
+cp /opt/velociraptor/linux/velociraptor_client /velociraptor/velociraptor && chmod +x /velociraptor/velociraptor
 mkdir -p $CLIENT_DIR/linux && rsync -a /opt/velociraptor/linux/velociraptor* /velociraptor/clients/linux/
 mkdir -p $CLIENT_DIR/mac && rsync -a /opt/velociraptor/mac/velociraptor_client* /velociraptor/clients/mac/
 mkdir -p $CLIENT_DIR/windows && rsync -a /opt/velociraptor/windows/velociraptor_client* /velociraptor/clients/windows/
