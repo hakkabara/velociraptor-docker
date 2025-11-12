@@ -12,6 +12,7 @@ RUN chmod +x entrypoint && \
     # Get Velox binaries
     WINDOWS_EXE=$(curl -s https://api.github.com/repos/velocidex/velociraptor/releases/latest | jq -r '[.assets | sort_by(.created_at) | reverse | .[] | .browser_download_url | select(test("windows-amd64.exe$"))][0]') && \
     WINDOWS_MSI=$(curl -s https://api.github.com/repos/velocidex/velociraptor/releases/latest | jq -r '[.assets | sort_by(.created_at) | reverse | .[] | .browser_download_url | select(test("windows-amd64.msi$"))][0]') && \
+    WINDOWS_MSI_386=$(curl -s https://api.github.com/repos/velocidex/velociraptor/releases/latest | jq -r '[.assets | sort_by(.created_at) | reverse | .[] | .browser_download_url | select(test("windows-386.msi$"))][0]') && \
     WINDOWS_LEGACY=$(curl -s https://api.github.com/repos/velocidex/velociraptor/releases/latest | jq -r '[.assets | sort_by(.created_at) | reverse | .[] | .browser_download_url | select(test("amd64-legacy.exe$"))][0]') && \
     WINDOWS_LEGACY_386=$(curl -s https://api.github.com/repos/velocidex/velociraptor/releases/latest | jq -r '[.assets | sort_by(.created_at) | reverse | .[] | .browser_download_url | select(test("windows-386-legacy.exe$"))][0]') && \
     LINUX_BIN=$(curl -s https://api.github.com/repos/velocidex/velociraptor/releases/latest | jq -r '[.assets | sort_by(.created_at) | reverse | .[] | .browser_download_url | select(test("linux-amd64$"))][0]') && \
@@ -29,6 +30,7 @@ RUN chmod +x entrypoint && \
     wget -O /opt/velociraptor/mac/velociraptor_client_arm "$MAC_ARM_BIN" && \
     wget -O /opt/velociraptor/windows/velociraptor_client.exe "$WINDOWS_EXE" && \
     wget -O /opt/velociraptor/windows/velociraptor_client.msi "$WINDOWS_MSI" && \
+    wget -O /opt/velociraptor/windows/velociraptor_client_32.msi "$WINDOWS_MSI_386" && \
     wget -O /opt/velociraptor/windows/velociraptor_client_legacy64.exe "$WINDOWS_LEGACY" && \
     wget -O /opt/velociraptor/windows/velociraptor_client_legacy32.exe "$WINDOWS_LEGACY_386" && \
     # Clean up
