@@ -24,8 +24,8 @@ if [ ! -f server.config.yaml ]; then
     # split the cert
     awk '/^client_cert: \|/ { flag=1; next } /^[^ ]/ { flag=0 } flag { sub(/^  /, ""); print }' /velociraptor/velociraptor-mtls.yaml > /velociraptor/client_cert.pem
     awk '/^client_private_key: \|/ { flag=1; next } /^[^ ]/ { flag=0 } flag { sub(/^  /, ""); print }' /velociraptor/velociraptor-mtls.yaml > /velociraptor/client_private_key.pem
-    ./velociraptor --config server.config.yaml config show --config.client-crypto-client-certificate="$(</velociraptor/client_cert.pem)" --config.client-crypto-client-certificate-private-key="$(</velociraptor/client_private_key.pem)"  > /velociraptor/server.config.temp
-    mv /velociraptor/server.config.temp /velociraptor/server.config.yaml
+    ./velociraptor --config server.config.yaml config show --config.client-crypto-client-certificate="$(</velociraptor/client_cert.pem)" --config.client-crypto-client-certificate-private-key="$(</velociraptor/client_private_key.pem)"  > /tmp/server.config.yaml
+    mv /tmp/server.config.yaml /velociraptor/
     sed -i '/- https:\/\/localhost:8000/d' server.config.yaml
     sed -i 's#/tmp/velociraptor#.#'g server.config.yaml
 fi
