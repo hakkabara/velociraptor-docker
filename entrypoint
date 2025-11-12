@@ -44,12 +44,18 @@ fi
 ./velociraptor --config server.config.yaml config client > client.config.yaml
 
 # Repack clients
-./velociraptor config repack --exe clients/linux/velociraptor_client client.config.yaml clients/linux/velociraptor_client_repacked
-./velociraptor --config client.config.yaml debian client --output clients/linux/velociraptor_client_repacked.deb
-./velociraptor --config client.config.yaml rpm client --output clients/linux/velociraptor_client_repacked.rpm
-./velociraptor config repack --exe clients/mac/velociraptor_client client.config.yaml clients/mac/velociraptor_client_repacked
-./velociraptor config repack --exe clients/windows/velociraptor_client.exe client.config.yaml clients/windows/velociraptor_client_repacked.exe
-./velociraptor config repack --msi clients/windows/velociraptor_client.msi client.config.yaml clients/windows/velociraptor_client_repacked.msi
+# Linux
+./velociraptor config repack --exe clients/linux/velociraptor_client client.config.yaml /velociraptor/clients/linux/velociraptor_client_repacked
+./velociraptor --config client.config.yaml debian client --output /velociraptor/clients/linux/velociraptor_client_repacked_amd64.deb
+./velociraptor --config client.config.yaml debian client --binary /velociraptor/clients/linux/velociraptor_client_arm --output /velociraptor/lients/linux/velociraptor_client_repacked_arm.deb
+./velociraptor --config client.config.yaml debian client --binary /velociraptor/clients/linux/velociraptor_client_musl --output /velociraptor/clients/linux/velociraptor_client_repacked_musl.deb
+./velociraptor --config client.config.yaml rpm client --binary /velociraptor/clients/linux/velociraptor_client_musl --output /velociraptor/clients/linux/velociraptor_client_repacked_musl.rpm
+./velociraptor --config client.config.yaml rpm client --output /velociraptor/clients/linux/velociraptor_client_repacked.rpm
+./velociraptor --config client.config.yaml rpm client --binary /velociraptor/clients/linux/velociraptor_client_arm --output /velociraptor/clients/linux/velociraptor_client_repacked_arm.rpm
+# windows
+./velociraptor config repack --exe /velociraptor/clients/windows/velociraptor_client.exe client.config.yaml /velociraptor/clients/windows/velociraptor_client_repacked.exe
+./velociraptor config repack --msi /velociraptor/clients/windows/velociraptor_client.msi client.config.yaml /velociraptor/clients/windows/velociraptor_client_repacked.msi
+./velociraptor config repack --msi /velociraptor/clients/windows/velociraptor_client_32.msi client.config.yaml /velociraptor/clients/windows/velociraptor_client_repacked_32.msi
 
 # Start Velocoraptor
 ./velociraptor --config server.config.yaml frontend -v
