@@ -53,6 +53,8 @@ fi
 ./velociraptor --config client.config.yaml rpm client --output /velociraptor/clients/linux/
 ./velociraptor --config client.config.yaml rpm client --binary /velociraptor/clients/linux/velociraptor_client_arm --output /velociraptor/clients/linux/
 # windows
+./velociraptor config repack --exe /velociraptor/clients/windows/velociraptor_client_legacy64.exe  client.config.yaml /velociraptor/clients/windows/velociraptor_client_legacy64_repacked.exe
+./velociraptor config repack --exe /velociraptor/clients/windows/velociraptor_client_legacy32.exe  client.config.yaml /velociraptor/clients/windows/velociraptor_client_legacy32_repacked.exe
 ./velociraptor config repack --exe /velociraptor/clients/windows/velociraptor_client.exe client.config.yaml /velociraptor/clients/windows/velociraptor_client_repacked.exe
 ./velociraptor config repack --msi /velociraptor/clients/windows/velociraptor_client.msi client.config.yaml /velociraptor/clients/windows/velociraptor_client_repacked.msi
 ./velociraptor config repack --msi /velociraptor/clients/windows/velociraptor_client_32.msi client.config.yaml /velociraptor/clients/windows/velociraptor_client_repacked_32.msi
