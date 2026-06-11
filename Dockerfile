@@ -26,15 +26,15 @@ RUN chmod +x entrypoint && \
     wget -O /opt/velociraptor/linux/velociraptor_client "$LINUX_BIN" && \
     wget -O /opt/velociraptor/linux/velociraptor_client_musl "$LINUX_MUSL_BIN" && \
     wget -O /opt/velociraptor/linux/velociraptor_client_arm "$LINUX_ARM_BIN" && \
-    wget -O /opt/velociraptor/linux/velociraptor_client_freebsd "$FREEBSD_BIN" && \
+    #wget -O /opt/velociraptor/linux/velociraptor_client_freebsd "$FREEBSD_BIN" && \
     wget -O /opt/velociraptor/mac/velociraptor_client "$MAC_BIN" && \
     wget -O /opt/velociraptor/mac/velociraptor_client_arm "$MAC_ARM_BIN" && \
     wget -O /opt/velociraptor/windows/velociraptor_client.exe "$WINDOWS_EXE" && \
     wget -O /opt/velociraptor/windows/velociraptor_client_32.exe "$WINDOWS_EXE_386" && \
     wget -O /opt/velociraptor/windows/velociraptor_client.msi "$WINDOWS_MSI" && \
     wget -O /opt/velociraptor/windows/velociraptor_client_32.msi "$WINDOWS_MSI_386" && \
-    wget -O /opt/velociraptor/windows/velociraptor_client_legacy64.exe "$WINDOWS_LEGACY" && \
-    wget -O /opt/velociraptor/windows/velociraptor_client_legacy32.exe "$WINDOWS_LEGACY_386" && \
+    #wget -O /opt/velociraptor/windows/velociraptor_client_legacy64.exe "$WINDOWS_LEGACY" && \
+    #wget -O /opt/velociraptor/windows/velociraptor_client_legacy32.exe "$WINDOWS_LEGACY_386" && \
     # Clean up
     apt-get remove -y --purge wget && \
     apt-get clean
